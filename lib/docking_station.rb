@@ -22,4 +22,13 @@ class DockingStation
     bike_count == @capacity
   end
 
+  def dock(bike)
+  raise "Station is full" if full?
+  @bikes << bike
+  end
+
+  #def fill_station(station)
+  #  20.times { station.dock(Bike.new) }
+  #end
+
 end
