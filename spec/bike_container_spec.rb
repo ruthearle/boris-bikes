@@ -1,6 +1,9 @@
 require './lib/bike_container'
 
+shared_examples 'a bike container' do
+
 class  ContainerHolder; include BikeContainer; end
+
 
 describe BikeContainer do
 
@@ -46,4 +49,5 @@ describe BikeContainer do
     expect(holder.available_bikes).to eq([working_bike])
   end
 
+end
 end

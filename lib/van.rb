@@ -8,4 +8,8 @@ class Van
     self.capacity = options.fetch(:capacity, capacity)
   end
 
+  def retrieve(bike)
+  	broken_bikes << broken_bike
+  end
+
 end

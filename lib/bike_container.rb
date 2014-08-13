@@ -23,6 +23,19 @@ module BikeContainer
     bikes << bike
   end
 
+  def broken_bike_count
+    broken_bikes.count
+  end
+
+  def broken_bikes
+    @broken_bikes ||= []
+  end
+
+  def broken_bike
+    bikes.select { |bike| bike.broken?}
+  end
+
+
   def release(bike)
     bikes.delete(bike)
   end
@@ -34,4 +47,5 @@ module BikeContainer
   def available_bikes
     bikes.reject { |bike| bike.broken? }
   end
+
 end
