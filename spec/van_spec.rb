@@ -5,19 +5,18 @@ describe Van do
 	it_behaves_like 'a bike container'
 
   let(:van) {Van.new(:capacity => 123)}
-  let(:bike) {Bike.new}
+  let(:bike) {double :bike, broken?: false}
+  let(:broken_bike) {double :bike, broken?: true}
+  let(:station) {double :station, {:bikes => [bike, broken_bike]}}
 
   it 'should be able to set a default capacity on initialisation' do
     expect(van.capacity).to eq (123)
   end
 
   it 'should be able to selectively collect broken bikes' do
-  	broken_bike = Bike.new
-  	broken_bike.break!
-  	expect(van.bike_count).to eq(0)
-  	van.retrieve(broken_bike)
-  	expect(van.broken_bikes.count).to eq(1)
-  	expect(van.bike_count).to eq(0)
+    expect(station).to receive(:release).with(broken_bike)
+    van.collect(station)
+    expect(van.bikes).to eq [broken_bike]
   end
 
 

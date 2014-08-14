@@ -12,4 +12,15 @@ class Van
   	broken_bikes << broken_bike
   end
 
+  def collect(station)
+  	station.bikes.each do |bike|
+  		if bike.broken?
+  		  self.dock(bike)
+  		  station.release(bike)
+  		 end 
+  	end
+  end
+
+
+
 end
