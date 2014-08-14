@@ -7,8 +7,10 @@ class  ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do
 
-  let(:bike) { Bike.new }
-  let(:holder) { ContainerHolder.new }
+  let(:bike)         { double :bike                 }
+  let(:working_bike) { double :bike, broken?: false }
+  let(:broken_bike)  { double :bike, broken?: true  }
+  let(:holder)       { ContainerHolder.new          }
 
   it 'should accept a bike' do
     # we expect the holder to have 0 bikes
@@ -26,7 +28,7 @@ describe BikeContainer do
   end
 
   def fill_holder(holder)
-    holder.capacity.times { holder.dock(Bike.new) }
+    holder.capacity.times { holder.dock(bike) }
   end
 
   it "should know when it's full" do
@@ -42,8 +44,7 @@ describe BikeContainer do
   end
 
   it "should provide the list of available bikes" do
-    working_bike, broken_bike = Bike.new, Bike.new
-    broken_bike.break!
+    allow(broken_bike).to receive(:break!)
     holder.dock(working_bike)
     holder.dock(broken_bike)
     expect(holder.available_bikes).to eq([working_bike])
