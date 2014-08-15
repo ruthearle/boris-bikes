@@ -1,16 +1,13 @@
 require './lib/bike_container'
+require './lib/bike'
 
 shared_examples 'a bike container' do
 
-class  ContainerHolder; include BikeContainer; end
-
-
-describe BikeContainer do
 
   let(:bike)         { double :bike                 }
   let(:working_bike) { double :bike, broken?: false }
   let(:broken_bike)  { double :bike, broken?: true  }
-  let(:holder)       { ContainerHolder.new          }
+  let(:holder)       { described_class.new          }
 
   it 'should accept a bike' do
     # we expect the holder to have 0 bikes
@@ -51,10 +48,4 @@ describe BikeContainer do
     expect(holder.available_bikes).to eq([working_bike])
   end
 
-  it 'should know where the bike is located' do
-    holder.dock(bike)
-    allow(bike).to receive(:location)
-    expect(bike.location).to eq holder.class
-  end
-end
 end
