@@ -4,8 +4,11 @@ class Van
 
   include BikeContainer
 
+ 
+
   def initialize(options = {})
     self.capacity = options.fetch(:capacity, capacity)
+    @location = location 
   end
 
   def collect(station)
@@ -16,7 +19,9 @@ class Van
       end
     end
   end
-
+def location(where)
+		@location = where
+end
 
 
 end
