@@ -27,6 +27,7 @@ describe BikeContainer do
     expect(holder.bike_count).to eq(0)
   end
 
+
   def fill_holder(holder)
     holder.capacity.times { holder.dock(bike) }
   end
@@ -50,5 +51,10 @@ describe BikeContainer do
     expect(holder.available_bikes).to eq([working_bike])
   end
 
+  it 'should know where the bike is located' do
+    holder.dock(bike)
+    allow(bike).to receive(:location)
+    expect(bike.location).to eq holder.class
+  end
 end
 end

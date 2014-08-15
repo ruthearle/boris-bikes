@@ -21,6 +21,7 @@ module BikeContainer
   def dock(bike)
     raise "Station is full" if full?
     bikes << bike
+    puts self.class
   end
 
   def broken_bike_count

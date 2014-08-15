@@ -19,4 +19,5 @@ describe Bike do
 		expect(bike.broken?).to be false
 	end
 
+
 end
