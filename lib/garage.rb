@@ -9,6 +9,8 @@ class Garage
   end
 
   def fix_bike!(bike)
-	false
-  end 
+    raise "This is a working bike!" if bike.broken?
+    bike.fix!
+
+  end
 end

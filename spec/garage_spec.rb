@@ -16,7 +16,7 @@ describe Garage do
   end
 
   it 'should not fix working bikes' do
-	expect(garage.fix_bike!(working_bike)).to eq true
+	expect{garage.fix_bike!(working_bike)}.to raise_error(RuntimeError)
   end
 
 end
