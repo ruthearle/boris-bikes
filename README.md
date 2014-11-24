@@ -1,4 +1,4 @@
-| [*Makers Academy*](http://www.makersacademy.com) | Week 2 |
+| [*Makers Academy*](http://www.makersacademy.com) | Week 2 - Project |
 | ---------------- | ------ |
 
 Boris Bikes
